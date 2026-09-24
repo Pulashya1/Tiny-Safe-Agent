@@ -1,0 +1,21 @@
+# Secrets - never commit your real API key
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Saved agent runs (may contain task data)
+runs/
+
+# Frontend (install with npm install, build with npm run build)
+frontend/node_modules/
+frontend/dist/

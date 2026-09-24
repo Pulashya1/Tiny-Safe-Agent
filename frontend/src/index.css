@@ -1,0 +1,113 @@
+@import "tailwindcss";
+@import "@fontsource-variable/public-sans";
+
+/*
+  Design: a quiet control room. Color carries meaning only:
+  blue = the agent, red = stopped, orange = blocked, amber = waiting, green = done.
+*/
+@theme inline {
+  --font-sans: "Public Sans Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-paper: var(--paper);
+  --color-panel: var(--panel);
+  --color-sunken: var(--sunken);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-rule: var(--rule);
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-on-signal: var(--on-signal);
+  --color-stop: var(--stop);
+  --color-stop-soft: var(--stop-soft);
+  --color-block: var(--block);
+  --color-block-soft: var(--block-soft);
+  --color-wait: var(--wait);
+  --color-wait-soft: var(--wait-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+}
+
+:root {
+  --paper: #f4f6f8;
+  --panel: #ffffff;
+  --sunken: #eef1f4;
+  --ink: #16202a;
+  --muted: #5b6674;
+  --faint: #8a94a2;
+  --rule: #dfe3e8;
+  --signal: #2350b5;
+  --signal-soft: #e9eefa;
+  --on-signal: #ffffff;
+  --stop: #b42318;
+  --stop-soft: #fdecea;
+  --block: #b45309;
+  --block-soft: #fdf1e4;
+  --wait: #8a5a00;
+  --wait-soft: #fbf3d9;
+  --ok: #15803d;
+  --ok-soft: #e6f4ea;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f141a;
+    --panel: #161d25;
+    --sunken: #1c242e;
+    --ink: #e6eaf0;
+    --muted: #9aa5b3;
+    --faint: #6b7684;
+    --rule: #26303b;
+    --signal: #86a8f6;
+    --signal-soft: #1b2640;
+    --on-signal: #0f141a;
+    --stop: #f4817a;
+    --stop-soft: #3a1917;
+    --block: #f2a65a;
+    --block-soft: #3a2512;
+    --wait: #e8c15a;
+    --wait-soft: #33290f;
+    --ok: #5fd08a;
+    --ok-soft: #11301f;
+    color-scheme: dark;
+  }
+}
+
+html {
+  background: var(--paper);
+}
+
+body {
+  @apply bg-paper font-sans text-ink antialiased;
+  font-feature-settings: "tnum" 0;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* One deliberate moment of motion: a check lights up when it steps in. */
+@keyframes fire {
+  0% { transform: scale(0.96); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+.animate-fire {
+  animation: fire 420ms ease-out;
+}
+
+@keyframes pulse-dot {
+  50% { opacity: 0.3; }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fire,
+  .animate-pulse-dot,
+  .animate-spin {
+    animation: none;
+  }
+}
