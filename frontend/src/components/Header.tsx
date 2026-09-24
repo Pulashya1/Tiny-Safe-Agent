@@ -1,5 +1,6 @@
 import { ShieldCheck } from "lucide-react";
 import type { AgentState } from "../types";
+import { ThemeToggle } from "./ThemeToggle";
 
 const pill: Record<string, { text: (s: AgentState) => string; style: string }> = {
   idle: { text: () => "Ready", style: "bg-sunken text-muted" },
@@ -44,9 +45,10 @@ export function Header({ state, model }: { state: AgentState | null; model?: str
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <ThemeToggle />
           {model && (
-            <span className="hidden rounded-md border border-rule px-2 py-1 text-xs text-muted md:inline">
+            <span className="hidden rounded-md border border-rule px-2 py-1 text-xs text-muted xl:inline">
               {model}
             </span>
           )}

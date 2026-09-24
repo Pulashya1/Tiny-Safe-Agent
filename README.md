@@ -13,10 +13,10 @@ and the page shows each check as it fires.
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
 ![DeepSeek](https://img.shields.io/badge/Model-DeepSeek-4D6BFE)
 
-![Tiny Safe Agent: the agent tried to delete a locked task (blocked by a hard rule) and is now waiting for approval to delete another](docs/screenshots/approval-light.png)
+![Tiny Safe Agent: the agent wants to delete a task and is paused, waiting for a human to approve it](docs/screenshots/approval-light.png)
 
-<p align="center"><em>The agent was asked to clean up the list. The hard rule blocked it from deleting a locked task,
-and the second delete is waiting for a human to approve it.</em></p>
+<p align="center"><em>The agent was asked to clean up the list. Its delete is paused until a human approves it,
+and the "Human approval" check has lit up in the pipeline.</em></p>
 
 ---
 
@@ -51,8 +51,8 @@ read by beginners.
     <td width="50%"><img src="docs/screenshots/report-dark.png" alt="Finished run with the safety report, dark theme"></td>
   </tr>
   <tr>
-    <td align="center"><em>Safety report after a finished run (light theme)</em></td>
-    <td align="center"><em>The same run in the dark theme, which follows your system setting</em></td>
+    <td align="center"><em>Safety report after the run finished: the hard rule blocked a locked task, and one delete was approved</em></td>
+    <td align="center"><em>The same run in the dark theme</em></td>
   </tr>
   <tr>
     <td width="50%"><img src="docs/screenshots/canary-light.png" alt="Canary token triggered: the agent tried to leak a planted secret"></td>
@@ -86,6 +86,7 @@ Also:
 - **Key protection:** the API key stays in `.env`, never reaches the browser, logs or run files.
 - **Safe display:** React escapes all text, so an attack hidden in a note is *shown*, never run.
 - **Localhost only:** the server listens on `127.0.0.1`, so nobody else on your network can spend your API credit.
+- **Light / Dark / System theme:** switch it with the buttons in the header. Your choice is remembered, and "System" follows your computer's setting.
 
 ### Order of checks
 
@@ -217,7 +218,7 @@ engine.py            Safety engine: the agent loop and all safeguards (plain Pyt
 server.py            FastAPI web API; also serves the built frontend
 frontend/
   src/App.tsx        Page layout, polling, actions
-  src/components/    Pipeline, Controls, Composer, TodoList, ActivityLog, Report, Alerts
+  src/components/    Pipeline, Controls, Composer, TodoList, ActivityLog, Report, Alerts, ThemeToggle
   src/index.css      Design tokens (light + dark themes)
 docs/screenshots/    Images used in this README
 legacy/              The original Streamlit version, kept for reference
